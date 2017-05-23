@@ -40,7 +40,9 @@ function makeASpeaker (who:MovieClip){
 		if (s.update-->0)
 		for (var i=0; i<s.branch.length; i++)
 			{ s.from.push(s.branch[i].slice(0,s.branch[i].indexOf("_"))); s.to.push(s.branch[i].slice(s.branch[i].lastIndexOf("_")+1,s.branch[i].length)); trace(s.from[i]+" -> "+s.to[i]); s.condition.push( s.branch[i].slice(s.branch[i].indexOf("_")+1,s.branch[i].lastIndexOf("_")) ); trace("condition: "+s.condition[i]+";");}
-		
+		//23.05.2017
+		s.innerTimer++; if (s.innerTimer % 10 == 0)for (var i=0; i<s.branch.length; i++){ if (s.condition[i] < s.innerTimer){s.nowIn = s.to[i]; s.innerTimer =0; trace("switched by time"); break; } }
+		if (s.recievedAnswer != -1){ for (var i=0; i<s.branch.length; i++)if (s.condition[i] == "c"+(s.recievedAnswer+1)){ s.nowIn = s.to[i]; s.innerTimer =0; trace("switched by answer"); break; } s.recievedAnswer = -1; }
 	}
 	
 	
