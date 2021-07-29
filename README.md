@@ -1,5 +1,4 @@
 # FlashSerious
-There is some serious game development shit
 
 1. Симулятор езды в автобусе.
 
